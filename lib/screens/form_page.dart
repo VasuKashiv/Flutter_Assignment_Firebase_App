@@ -356,12 +356,14 @@ class _FormPageState extends State<FormPage> {
                                 /*Step 2: Upload to Firebase storage*/
                                 //Install firebase_storage
                                 //Import the library
-
+                                String uniqueFName = DateTime.now()
+                                    .millisecondsSinceEpoch
+                                    .toString();
                                 //Get a reference to storage root
                                 Reference referenceRoot =
                                     FirebaseStorage.instance.ref();
                                 Reference referenceDirImages =
-                                    referenceRoot.child('images');
+                                    referenceRoot.child(uniqueFName);
 
                                 //Create a reference for the image to be stored
                                 Reference referenceImageToUpload =
