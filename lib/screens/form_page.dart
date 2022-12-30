@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_final_fields, prefer_const_constructors, sized_box_for_whitespace, use_build_context_synchronously, prefer_typing_uninitialized_variables
 
 import 'dart:io';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:employee_database_app/constants/ui_constants.dart';
 import 'package:employee_database_app/screens/display_info.dart';
@@ -282,19 +283,22 @@ class _FormPageState extends State<FormPage> {
                                           snapshot.data!.docs[i];
                                       menuItem.add(DropdownMenuItem(
                                           value: snap.id,
-                                          child: Text(snap.id)));
+                                          child: Text(
+                                            snap.id,
+                                            style: TextStyle(fontSize: 12),
+                                          )));
                                     }
                                     return Row(
                                       children: [
-                                        Text(
+                                        AutoSizeText(
                                           'Select your employment status',
-                                          style: TextStyle(fontSize: 15),
+                                          style: TextStyle(fontSize: 12),
                                         ),
                                         SizedBox(
                                           width: 20,
                                         ),
                                         DropdownButton(
-                                          iconSize: 50,
+                                          iconSize: 30,
                                           items: menuItem,
                                           onChanged: ((newvalue) {
                                             setState(() {
@@ -359,15 +363,16 @@ class _FormPageState extends State<FormPage> {
                                 String uniqueFName = DateTime.now()
                                     .millisecondsSinceEpoch
                                     .toString();
+
                                 //Get a reference to storage root
                                 Reference referenceRoot =
                                     FirebaseStorage.instance.ref();
                                 Reference referenceDirImages =
-                                    referenceRoot.child(uniqueFName);
+                                    referenceRoot.child('images');
 
                                 //Create a reference for the image to be stored
                                 Reference referenceImageToUpload =
-                                    referenceDirImages.child('name');
+                                    referenceDirImages.child(uniqueFName);
 
                                 //Handle errors/success
                                 try {
