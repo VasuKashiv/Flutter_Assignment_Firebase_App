@@ -2,7 +2,7 @@
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:employee_database_app/screens/form_page.dart';
+import 'package:employee_database_app/screens/form_page_2.dart';
 import 'package:flutter/material.dart';
 
 class DisplayScreen extends StatefulWidget {
@@ -41,11 +41,13 @@ class _DisplayScreenState extends State<DisplayScreen> {
             QuerySnapshot? querySnapshot = snapshot.data;
             List<QueryDocumentSnapshot> listQueryDocumentSnapshot =
                 querySnapshot!.docs;
+
             return ListView.builder(
               itemCount: listQueryDocumentSnapshot.length,
               itemBuilder: (BuildContext context, int index) {
                 QueryDocumentSnapshot document =
                     listQueryDocumentSnapshot[index];
+
                 return Container(
                   height: 320,
                   child: Card(
@@ -69,7 +71,7 @@ class _DisplayScreenState extends State<DisplayScreen> {
                                     children: [
                                       Expanded(
                                           child: AutoSizeText(
-                                        'Full Name:',
+                                        'Full Name',
                                         minFontSize: 18,
                                         maxLines: 1,
                                         style: TextStyle(
@@ -77,183 +79,10 @@ class _DisplayScreenState extends State<DisplayScreen> {
                                       )),
                                       Expanded(
                                           child: AutoSizeText(
-                                        document['name'] ?? '',
+                                        document['full name'] ?? '',
                                         overflow: TextOverflow.ellipsis,
                                         minFontSize: 18,
                                         maxLines: 1,
-                                      )),
-                                    ],
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                          child: AutoSizeText(
-                                        'Date Of Birth:',
-                                        minFontSize: 18,
-                                        maxLines: 1,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      )),
-                                      Expanded(
-                                          child: AutoSizeText(
-                                        document['dob'],
-                                        overflow: TextOverflow.ellipsis,
-                                        minFontSize: 18,
-                                        maxLines: 1,
-                                      )),
-                                    ],
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                          child: AutoSizeText(
-                                        'Gender:',
-                                        minFontSize: 18,
-                                        maxLines: 1,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      )),
-                                      Expanded(
-                                          child: AutoSizeText(
-                                        document['gender'],
-                                        overflow: TextOverflow.ellipsis,
-                                        minFontSize: 18,
-                                        maxLines: 1,
-                                      )),
-                                    ],
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                          child: AutoSizeText(
-                                        'Phone Number:',
-                                        minFontSize: 18,
-                                        maxLines: 1,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      )),
-                                      Expanded(
-                                          child: AutoSizeText(
-                                        document['phoneNum'],
-                                        overflow: TextOverflow.ellipsis,
-                                        minFontSize: 18,
-                                        maxLines: 1,
-                                      )),
-                                    ],
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                          child: AutoSizeText(
-                                        'Job Position:',
-                                        minFontSize: 18,
-                                        maxLines: 1,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      )),
-                                      Expanded(
-                                          child: AutoSizeText(
-                                        document['jobpos'],
-                                        overflow: TextOverflow.ellipsis,
-                                        minFontSize: 18,
-                                        maxLines: 1,
-                                      )),
-                                    ],
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                          child: AutoSizeText(
-                                        'Date Of Joining:',
-                                        minFontSize: 18,
-                                        maxLines: 1,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      )),
-                                      Expanded(
-                                          child: AutoSizeText(
-                                        document['doj'],
-                                        overflow: TextOverflow.visible,
-                                        minFontSize: 18,
-                                        maxLines: 1,
-                                      )),
-                                    ],
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                          child: AutoSizeText(
-                                        'Employment:',
-                                        minFontSize: 18,
-                                        maxLines: 1,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      )),
-                                      Expanded(
-                                          child: AutoSizeText(
-                                        document['emply_stat'],
-                                        overflow: TextOverflow.visible,
-                                        minFontSize: 18,
-                                        maxLines: 1,
-                                      )),
-                                    ],
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                          child: AutoSizeText(
-                                        'Working Hours:',
-                                        minFontSize: 18,
-                                        maxLines: 1,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      )),
-                                      Expanded(
-                                          child: AutoSizeText(
-                                        document['work_hours'],
-                                        overflow: TextOverflow.visible,
-                                        minFontSize: 18,
-                                        maxLines: 1,
-                                      )),
-                                    ],
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 2,
-                                  child: Row(
-                                    textBaseline: TextBaseline.alphabetic,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.baseline,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Expanded(
-                                          child: AutoSizeText(
-                                        'Feedback:',
-                                        minFontSize: 18,
-                                        maxLines: 1,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      )),
-                                      Expanded(
-                                          child: AutoSizeText(
-                                        document['feedback'],
-                                        overflow: TextOverflow.ellipsis,
-                                        minFontSize: 16,
-                                        maxLines: 5,
                                       )),
                                     ],
                                   ),
@@ -262,19 +91,6 @@ class _DisplayScreenState extends State<DisplayScreen> {
                             ),
                           ),
                         ),
-                        Container(
-                          margin: EdgeInsets.only(right: 15, top: 15),
-                          color: Colors.grey,
-                          child: Image(
-                            height: 100,
-                            width: 100,
-                            image: NetworkImage(
-                              document['image'],
-                              scale: 1,
-                            ),
-                            fit: BoxFit.cover,
-                          ),
-                        )
                       ],
                     ),
                   ),
@@ -288,7 +104,7 @@ class _DisplayScreenState extends State<DisplayScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => FormPage()));
+              .push(MaterialPageRoute(builder: (context) => FormPage_x()));
         },
         tooltip: 'Submit New Form',
         child: const Icon(Icons.add),

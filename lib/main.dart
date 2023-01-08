@@ -1,7 +1,7 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unused_import
 
 import 'package:employee_database_app/firebase_options.dart';
-import 'package:employee_database_app/screens/form_page.dart';
+import 'package:employee_database_app/screens/form_page_2.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: FormPage(),
+      home: FormPage_x(),
     );
   }
 }
